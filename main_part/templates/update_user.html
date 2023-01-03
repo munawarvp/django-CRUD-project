@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/admin_styles.css' %}">
+    <title>Update User</title>
+
+</head>
+<body>
+    <section id="menu">
+        <div class="logo">
+            <a href="{% url 'admin_panel' %}" class="logotag"><h2>Admin Panel</h2></a> 
+        </div>
+
+        <div class="items">
+            <li><ion-icon name="pie-chart-outline"></ion-icon><a href="#">Dashboard</a></li>
+            <li><ion-icon name="people-outline"></ion-icon><a href="#">Users</a></li>
+            <li><ion-icon name="settings-outline"></ion-icon><a href="#">Settings</a></li>
+            <li><ion-icon name="help-circle-outline"></ion-icon><a href="#">Help</a></li>
+            
+        </div>
+    </section>
+    <section id="interface">
+        <div class="navigation">
+            <div class="n1">
+                <div>
+                    <ion-icon id="menu-btn" name="menu-outline"></ion-icon>
+                </div>
+                <div class="search">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+            <div class="profile">
+                <ion-icon name="notifications-outline"></ion-icon>
+                <ion-icon name="person-outline"></ion-icon>
+                <h6>username</h6>
+            </div> 
+        </div>
+
+        <h3 class="page_name" style="margin-top: 75px;">Update Users</h3>
+        <div class="wrapper">
+            <h2>Update user here</h2>
+            <form action="/update_user_form/{{users.id}}" method="POST" class="add-update">
+                {% csrf_token %}
+                <input type="text" placeholder="username" value="{{ users.username }}" name="username">
+                <input type="email" placeholder="email" value="{{ users.email }}" name="email">
+                <input type="text" placeholder="password" value="{{ users.password }}" name="password">
+                <input type="text" placeholder="Re-Enter password" value="{{ users.password}}"><br>
+                <input type="submit" class="frm-btn" style="width: 150px; background: #594ef7;" value="Update">
+                
+            </form>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home_styles.css' %}">
+    <title>Home</title>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="{% static 'images/logo.png' %} " width="125px" alt="">
+                </div>
+                <nav>
+                    <ul id="menuitems">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Product</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Contact</a></li>
+                        <li><a href="">Account</a></li>
+                        <li><a href="{% url 'logout' %}" class="btn">Logout</a></li>
+                    </ul>
+                </nav>
+                <img src="{% static 'images/cart.png' %}" width="30px" height="30px" alt="">
+                <img src="{% static 'images/menu.png' %}" class="menu-icon" onclick="menutoggle()" alt="">
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <h1>Give your workout<br> A new style!</h1>
+                    <a href="#" class="btn">Explore Now &#8594;</a>
+                </div>
+                <div class="col-2">
+                    <img src="{% static 'images/image1.png' %} " alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="categories">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <img src="{% static 'images/category-1.jpg' %} " alt="">
+                </div>
+                <div class="col-3">
+                    <img src="{% static 'images/category-2.jpg' %} " alt="">
+                </div>
+                <div class="col-3">
+                    <img src="{% static 'images/category-3.jpg' %} " alt="">
+                </div>
+            </div>
+        </div> 
+    </div>
+<!-- ------ -->
+    <div class="small-container">
+        <h2 class="title">Featured Product</h2>
+        <div class="row">
+            {% for i in products %}
+
+            <div class="col-4">
+                <img src="{{i.product_img.url}}" alt="">
+                <h4>{{i.product_name}}</h4>
+                <p>{{i.product_price}}rs</p>
+            </div>
+
+            {% endfor %}
+        </div>
+        <h2 class="title">Latest Product</h2>
+        <div class="row">
+            {% for i in la_products %}
+            <div class="col-4">
+                <img src="{{i.la_prod_image.url}}" alt="">
+                <h4>{{i.la_prod_name}}</h4>
+                <p>{{i.la_prod_price}}rs</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+    <!-- -------- -->
+    
+    <div class="offer">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="{% static 'images/exclusive.png' %}" class="offer-img" alt="">
+                </div>
+                <div class="col-2">
+                    <p>Exclusively Available on RedStore</p>
+                    <h1>Smart Band 4</h1>
+                    <a href="#" class="btn">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- --------------->
+    
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Download App for Android and ios phone.</p>
+                    <div class="app-logo">
+                        <img src="{% static 'images/play-store.png' %}" alt="">
+                        <img src="{% static 'images/app-store.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="{% static 'images/logo-white.png' %}" alt="">
+                    <p>Our Purpose is to sustainably make the pleasure and benefits of sports accesible to the many.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright 2023 - munawar</p>
+        </div>
+    </div>
+    
+</body>
+</html>

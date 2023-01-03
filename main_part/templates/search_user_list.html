@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/admin_styles.css' %}">
+    
+    <title>Admin panel</title>
+</head>
+<body>
+    <section id="menu">
+        <div class="logo">
+            <a href="{% url 'admin_panel' %}" class="logotag"><h2>Admin Panel</h2></a> 
+        </div>
+
+        <div class="items">
+            <li><ion-icon name="pie-chart-outline"></ion-icon><a href="#">Dashboard</a></li>
+            <li><ion-icon name="help-circle-outline"></ion-icon><a href="{% url 'home' %}">Home</a></li>
+            <li><ion-icon name="people-outline"></ion-icon><a href="#">Users</a></li>
+            <li><ion-icon name="settings-outline"></ion-icon><a href="#">Settings</a></li>
+            <li><ion-icon name="help-circle-outline"></ion-icon><a href="#">Help</a></li>
+            
+        </div>
+    </section>
+
+    <section id="interface">
+        <div class="navigation">
+            <div class="n1">
+                <form action="" class="search-form" >
+                    <div class="search">
+                        <ion-icon name="search-outline"></ion-icon>
+                        <input type="text" placeholder="Search">
+                    </div>
+                    
+                    <button class="search-btn" >Search</button>
+                    
+                </form>
+                <div style=" background: cornflowerblue; padding: 8px; border-radius: 7px; margin-left: 10px;">
+                    <a href="{% url 'home' %}" style="text-decoration:none; color:rgb(255, 255, 255);" class="home-btn">Home Page</a>
+                </div>
+            </div>
+            <div class="profile">
+                <div class="log" style="background-color: cornflowerblue; padding: 10px; border-radius:7px;">
+                    <a href="{% url 'logout' %}" style="color: #fff;">Logout</a>
+                </div>
+                
+                
+            </div> 
+        </div>
+
+        <h3 class="page_name">Dashboard</h3>
+
+        <div class="values">
+            <a href="{% url 'add_user' %}"><div class="val-box">
+                <ion-icon name="add-circle-outline"></ion-icon>
+                <div>
+                    <h3>Add New User</h3>
+                </div>
+            </div></a>
+            <a href="#"><div class="val-box">
+                <ion-icon name="arrow-up-circle-outline"></ion-icon>
+                <div>
+                    <h3>Update User</h3>
+                </div>
+            </div></a>
+            <div class="val-box">
+                <ion-icon name="trash-outline"></ion-icon>
+                <div>
+                    <h3>Delete User</h3>
+                </div>
+            </div>
+            <div class="val-box">
+                <ion-icon name="create-outline"></ion-icon>
+                <div>
+                    <h3>Number of Users</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="board">
+            <form action="">
+
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <td>User_Id</td>
+                            <td>username</td>
+                            <td>email</td>
+                            <td>password</td>
+                            <td>status</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in users %}
+                        <tr>
+                            <td class="people">
+                                <div class="people-de">
+                                    <h5>{{i.id}}</h5>
+                                </div>
+                            </td>
+                            <td class="people">
+                                <div class="people-de">
+                                    <h5>{{i.username}}</h5>
+                                </div>
+                            </td>
+                            <td class="email">
+                                <h5>{{i.email}}</h5>
+                            </td>
+                            <td class="pass">
+                                <h5>{{i.password}}</h5>
+                            </td>
+                            <td class="active"><p>Active</p></td>
+                            <td class="edit"><a href='/update_user/{{i.id}}'>Edit</a></td>
+                            
+                            <td class="edit"><a href='/delete_user/{{i.id}}'>Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+
+            </form>
+            
+        </div>
+    </section>
+
+
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        function check(){
+            console.log(76786)
+        }
+    </script>
+</body>
+</html>
